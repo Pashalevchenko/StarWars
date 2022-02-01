@@ -1,0 +1,6 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<app-planet *ngFor="let planet of planets?.results" [planet]="planet"></app-planet>
+<div class="d-flex gap-2 m-2">
+  <button (click)="back()" class="btn btn-primary" type="button">Back</button>
+  <button (click)="next()" class="btn btn-primary" type="button">Next</button>
+</div>

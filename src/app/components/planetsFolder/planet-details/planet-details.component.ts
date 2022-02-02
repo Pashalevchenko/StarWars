@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ResidentService } from 'src/app/services/resident.service';
 
 @Component({
   selector: 'app-planet-details',
@@ -9,10 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PlanetDetailsComponent implements OnInit {
 
   planet: any;
-
-  constructor(private router: Router) {
+  residents: any[] = []
+ 
+  constructor(private router: Router, private residentService: ResidentService) {
     this.planet = this.router.getCurrentNavigation()?.extras.state
     // this.planet = this.router.getCurrentNavigation()?.extras.state as Type!!!!!
+    for (const residentUrl of this.planet.residents) {
+      this.residentService.getResident(residentUrl).subscribe(resident => {
+        this.residents.push(resident)
+      })
+    }
+    console.log(this.residents)
    }
 
   ngOnInit(): void {
@@ -21,6 +29,6 @@ export class PlanetDetailsComponent implements OnInit {
   getFullYear(data: string){
     return new Date(data).getFullYear()
   }
-
+ 
 
 }

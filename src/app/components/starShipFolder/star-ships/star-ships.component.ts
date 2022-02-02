@@ -11,6 +11,7 @@ export class StarShipsComponent implements OnInit {
   starShips: any;
   private currentPage: number = 1;
   favorite: any = [];
+  isLoading: boolean = false;
   
   constructor(private starShipService: StarShipService) { 
     this.starShipService = starShipService;

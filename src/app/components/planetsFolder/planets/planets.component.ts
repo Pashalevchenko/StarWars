@@ -10,7 +10,7 @@ export class PlanetsComponent implements OnInit {
 
   private currentPage: number = 1;
   planets: any;
-  isLoading: any;
+  isLoading: any = true;
   constructor(private plantesService: PlanetsService ) {
     this.onFechPost()
   }
@@ -18,13 +18,11 @@ export class PlanetsComponent implements OnInit {
 
 
   onFechPost() {
-    this.isLoading = true;
     new Promise((resolve) => {
-      resolve(this.plantesService.getPlanets(this.currentPage).subscribe(planets => {
+      this.plantesService.getPlanets(this.currentPage).subscribe(planets => {
         this.planets = planets
-      }))
-    }).finally(() => {
-      this.isLoading = false;
+        resolve(this.isLoading = false)
+      })
     }).catch(err=>{
       console.log(err)
     })

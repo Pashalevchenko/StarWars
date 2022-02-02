@@ -5,18 +5,21 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { routes } from './routes/basic.routes';
+
+
 // Commponents
 import { AppComponent } from './app.component';
-import { StarShipsComponent } from './components/star-ships/star-ships.component';
-import { StarShipComponent } from './components/star-ship/star-ship.component';
+import { StarShipsComponent } from './components/starShipFolder/star-ships/star-ships.component';
+import { StarShipComponent } from './components/starShipFolder/star-ship/star-ship.component';
 import { PlanetsComponent } from './components/planetsFolder/planets/planets.component';
 import { PlanetComponent } from './components/planetsFolder/planet/planet.component';
 import { PlanetDetailsComponent } from './components/planetsFolder/planet-details/planet-details.component';
-import { routes } from './routes/basic.routes';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { StarShipDetailsComponent } from './components/star-ship-details/star-ship-details.component';
-import { FavoriteComponent } from './components/favorite/favorite.component';
-import { FavoriteShipComponent } from './components/favorite-ship/favorite-ship.component';
+import { StarShipDetailsComponent } from './components/starShipFolder/star-ship-details/star-ship-details.component';
+import { FavoriteComponent } from './components/favoriteFolder/favorite/favorite.component';
+import { FavoriteShipComponent } from './components/favoriteFolder/favorite-ship/favorite-ship.component';
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 
 
 
@@ -32,6 +35,7 @@ import { FavoriteShipComponent } from './components/favorite-ship/favorite-ship.
     StarShipDetailsComponent,
     FavoriteComponent,
     FavoriteShipComponent,
+    ModalWindowComponent,
   ],
   imports: [
     BrowserModule,

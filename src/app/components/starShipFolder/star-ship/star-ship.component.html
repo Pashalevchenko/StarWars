@@ -1,0 +1,10 @@
+<div class="card mt-3" style="width: 350px">
+    <div class="card-body col">
+        <h5 class="card-title">{{starShip.name}}</h5>
+        <p class="card-text">Manufacture: {{starShip.manufacturer}}</p>
+        <div class="d-flex gap-2">
+            <button (click)="starShipDetail()" class="btn btn-primary">Details</button>
+            <button (click)="addToFavorite()" class="btn btn-primary">Add to favorite</button>
+        </div>
+    </div>
+</div>

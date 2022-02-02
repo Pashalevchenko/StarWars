@@ -9,23 +9,20 @@ import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.ser
 })
 export class FavoriteComponent implements OnInit {
 
-  favorite: any = []
+  favorite: any[] = []
 
   constructor(private favoriteStarShip: FavoriteStarShipService) { 
     this.favorite = this.favoriteStarShip.getFavoriteStarShips();
     
   }
-  
-  // favoriteArray: any = 
 
   ngOnInit(): void {
-    
-    
+     
   }
 
-  test(){
-    
-  
+  shipToDelite(val: any){
+    let delitedShip = this.favorite.findIndex((statShip) => statShip === val);
+    this.favorite.splice(delitedShip, 1)
   }
 
 }

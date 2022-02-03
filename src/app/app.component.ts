@@ -7,8 +7,14 @@ import { StarShipService } from './services/star-ship.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  submitFormStatus: boolean = false;
   constructor(){
    
+  }
+
+  submitStatus(isFormSubmit: boolean){
+    this.submitFormStatus = isFormSubmit;
   }
   
 }

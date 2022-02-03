@@ -19,7 +19,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StarShipDetailsComponent } from './components/starShipFolder/star-ship-details/star-ship-details.component';
 import { FavoriteComponent } from './components/favoriteFolder/favorite/favorite.component';
 import { FavoriteShipComponent } from './components/favoriteFolder/favorite-ship/favorite-ship.component';
-import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 
 
@@ -35,7 +35,7 @@ import { ModalWindowComponent } from './components/modal-window/modal-window.com
     StarShipDetailsComponent,
     FavoriteComponent,
     FavoriteShipComponent,
-    ModalWindowComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

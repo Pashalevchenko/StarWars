@@ -3,15 +3,12 @@
 <p>Create year:  {{ getFullYear(planet.created) }}</p>
 <p>Diametr: {{ planet.diameter }}</p>
 <p>Edited year:  {{ getFullYear(planet.edited) }}</p>
-<!-- <p>{{name}}</p> -->
 <p>Gravity: {{ planet.gravity }}</p>
 <p>Orbital period: {{ planet.orbital_period }}</p>
 <p>Population: {{ planet.population }}</p>
-<!-- <app-residents [residentsUrl]="planet.residents"></app-residents>
- -->
  <div>
      <h4>Redidents: </h4>
-    <p *ngFor="let resident of residents">{{resident.name}}</p>
+    <p *ngFor="let resident of residents"> - {{resident.name}}</p>
  </div>
 <p>Rotation period: {{ planet.rotation_period }}</p>
 <p>Surface Water: {{ planet.surface_water }}</p>

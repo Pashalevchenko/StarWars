@@ -17,7 +17,6 @@ export class AppComponent {
   //  if(!this.submitFormStatus){
   //   this.router.navigate(["/login"])
   //  }
-   console.log("hello")
   }
 
 

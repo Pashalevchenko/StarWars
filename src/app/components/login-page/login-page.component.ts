@@ -21,8 +21,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(){
-    // localStorage.setItem("isLogin", "true")
-    // this.router.navigate(["/"])
+    localStorage.setItem("isLogin", "true")
+    this.router.navigate(["/"])
   }
 
 }

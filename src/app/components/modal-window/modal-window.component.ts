@@ -16,11 +16,11 @@ export class ModalWindowComponent implements OnInit {
 
   ship: any;
   ngOnInit(): void {
-    console.log()
   }
 
   deliteFromFavList(){
     this.favoriteStarShipService.deliteStarShip(this.ship)
+    console.log(this.ship)
     this.modalRef.close()
   }
 

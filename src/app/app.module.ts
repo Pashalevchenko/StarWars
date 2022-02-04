@@ -20,6 +20,11 @@ import { StarShipDetailsComponent } from './components/starShipFolder/star-ship-
 import { FavoriteComponent } from './components/favoriteFolder/favorite/favorite.component';
 import { FavoriteShipComponent } from './components/favoriteFolder/favorite-ship/favorite-ship.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { Overlay } from '@angular/cdk/overlay';
 
 
 
@@ -36,14 +41,20 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     FavoriteComponent,
     FavoriteShipComponent,
     LoginPageComponent,
+    NavigationComponent,
+    ModalWindowComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    // NgModule
+    // NgbModal
+    
+  
   ],
-  providers: [],
+  providers: [MdbModalService, Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

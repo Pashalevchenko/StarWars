@@ -12,7 +12,7 @@ export class FavoriteComponent implements OnInit {
   favorite: any[] = []
 
   constructor(private favoriteStarShip: FavoriteStarShipService) { 
-    this.favorite = this.favoriteStarShip.getFavoriteStarShips();
+    this.favorite = this.favoriteStarShip.favoriteStarShips;
     
   }
 
@@ -21,6 +21,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   shipToDelite(val: any){
+    // Remove to service
     let delitedShip = this.favorite.findIndex((statShip) => statShip === val);
     this.favorite.splice(delitedShip, 1)
   }

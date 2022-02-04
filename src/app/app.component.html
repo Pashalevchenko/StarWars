@@ -1,9 +1,5 @@
-<app-login-page *ngIf="!submitFormStatus" (submitStatus)="submitStatus($event)"></app-login-page>
-<nav class="nav" *ngIf="submitFormStatus">
-    <a routerLink="/starships" class="nav-link">Star Ships</a>
-    <a routerLink="/planets" class="nav-link">Planets</a>
-    <a routerLink="/favorite" class="nav-link">Favorite</a>
-</nav>
+<!-- <app-login-page *ngIf="!submitFormStatus"></app-login-page> -->
+<app-navigation *ngIf="submitFormStatus"></app-navigation>
 <router-outlet></router-outlet> 
 
 

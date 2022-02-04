@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { StarShipService } from './services/star-ship.service';
 
 @Component({
@@ -8,13 +10,18 @@ import { StarShipService } from './services/star-ship.service';
 })
 export class AppComponent {
 
-  submitFormStatus: boolean = false;
-  constructor(){
-   
+  submitFormStatus = localStorage.getItem("isLogin")
+  // private refresh = new Subject()
+  
+  constructor(private router: Router){
+  //  if(!this.submitFormStatus){
+  //   this.router.navigate(["/login"])
+  //  }
+   console.log("hello")
   }
 
-  submitStatus(isFormSubmit: boolean){
-    this.submitFormStatus = isFormSubmit;
-  }
+
+
+
   
 }

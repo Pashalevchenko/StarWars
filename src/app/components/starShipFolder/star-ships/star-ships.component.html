@@ -1,4 +1,4 @@
-<app-star-ship *ngFor="let starShip of starShips?.results" [starShip]="starShip"></app-star-ship>
+<app-star-ship *ngFor="let starShip of starShips?.results" [starShip]="starShip" (favoriteStarship)="favStarShip($event)"></app-star-ship>
 <div class="d-flex gap-2 m-2">
   <button (click)="back()" class="btn btn-primary" type="button">Back</button>
   <button (click)="next()" class="btn btn-primary" type="button">Next</button>

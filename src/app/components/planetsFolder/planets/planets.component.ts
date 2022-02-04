@@ -31,6 +31,7 @@ export class PlanetsComponent implements OnInit {
   }
 
   back() {
+    if(this.currentPage < 0) return
     this.currentPage -= 1;
     this.onFechPost()
     console.log(this.currentPage)
@@ -38,6 +39,7 @@ export class PlanetsComponent implements OnInit {
   }
 
   next() {
+    if(this.currentPage > 6) return
     this.currentPage += 1;
     this.onFechPost()
     console.log(this.currentPage)

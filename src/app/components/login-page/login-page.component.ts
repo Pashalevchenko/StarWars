@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,14 +15,14 @@ export class LoginPageComponent implements OnInit {
   }
   isSubbmit = false;
   @Output() submitStatus = new EventEmitter()
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  saveInput(){
-    this.isSubbmit = true;
-    this.submitStatus.emit(this.isSubbmit)
+  onSubmit(){
+    // localStorage.setItem("isLogin", "true")
+    // this.router.navigate(["/"])
   }
 
 }

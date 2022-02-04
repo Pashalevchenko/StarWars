@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.service';
 import { StarShipService } from 'src/app/services/star-ship.service';
 
 @Component({
@@ -10,12 +11,13 @@ export class StarShipsComponent implements OnInit {
 
   starShips: any;
   private currentPage: number = 1;
-  favorite: any = [];
+  // favorite: any = [];
   isLoading: boolean = false;
   
-  constructor(private starShipService: StarShipService) { 
+  constructor(private starShipService: StarShipService, 
+              private favoriteStarShipService: FavoriteStarShipService) { 
     this.starShipService = starShipService;
-    this.onFechPost();
+    
   }
 
   onFechPost(url?: string){
@@ -29,7 +31,7 @@ export class StarShipsComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    
+    this.onFechPost();
   }
   
   back(){
@@ -38,8 +40,12 @@ export class StarShipsComponent implements OnInit {
   next(){
     this.onFechPost(this.starShips.next)
   }
-  selectedFavorite(val: any){
-    this.favorite.push(val)
+  // selectedFavorite(val: any){
+  //   this.favorite.push(val)
+  // }
+  favStarShip(favoriteStarShip: any){
+    // console.log(favoriteStarShip)
+    this.favoriteStarShipService.favoriteStarShips = favoriteStarShip;
   }
 
 }

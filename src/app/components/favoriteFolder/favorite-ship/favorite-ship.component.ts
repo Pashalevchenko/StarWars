@@ -1,17 +1,20 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalWindowComponent } from '../../modal-window/modal-window.component';
 
 @Component({
   selector: 'app-favorite-ship',
   templateUrl: './favorite-ship.component.html',
   styleUrls: ['./favorite-ship.component.css'],
-  providers: [NgbModalConfig, NgbModal]
+  // providers: [NgbModalConfig, NgbModal]
 })
 export class FavoriteShipComponent implements OnInit {
+  modalRef: MdbModalRef<ModalWindowComponent> | null = null
+  // private modalService: NgbModal
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
-    config.backdrop = 'static';
-    config.keyboard = false;
+  constructor(private modalService: MdbModalService) {
+    
    }
   @Input() favoriteShip: any
 
@@ -22,10 +25,11 @@ export class FavoriteShipComponent implements OnInit {
 
   deliteFromFavList(){
     this.shipToDelite.emit(this.favoriteShip)
+    
   }
 
-  open(content: any) {
-    this.modalService.open(content);
+  open() {
+    this.modalRef = this.modalService.open(ModalWindowComponent, {data: {title: this.favoriteShip.name}})
   }
-  
+ 
 }

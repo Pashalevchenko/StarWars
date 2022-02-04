@@ -1,13 +1,16 @@
-<div class="card mt-3" style="width: 350px">
+
+<!-- <ng-template #content> -->
+  <div class="card mt-3" style="width: 350px">
     <div class="card-body col">
         <h5 class="card-title">Name: {{favoriteShip.name}}</h5>
         <p class="card-text">Manufacturer: {{favoriteShip.manufacturer}}</p>
         <!-- <button class="btn btn-primary" (click)="deliteFromFavList()">Delite</button> -->
-        <button class="btn btn-primary" (click)="open(content)">Delite</button>
+        <button class="btn btn-primary" (click)="open()">Delite</button>
     </div>
 </div>
+<!-- </ng-template> -->
 
-<ng-template #content let-c="close" let-d="dismiss">
+<!-- <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Remove Star Ship!!</h4>
     </div>
@@ -16,6 +19,10 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancele</button>
-      <button type="button" class="btn btn-outline-dark" (click)="c('del click'); deliteFromFavList()">Remove</button>
-    </div>
-</ng-template>
+      Remove deliteFromFav -->
+      <!-- <button type="button" class="btn btn-outline-dark" (click)="c('del click'); deliteFromFavList()">Remove</button> -->
+     <!-- </div> -->
+ <!-- </ng-template>   -->
+
+
+

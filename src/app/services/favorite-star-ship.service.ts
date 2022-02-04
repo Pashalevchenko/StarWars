@@ -5,14 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class FavoriteStarShipService {
 
-  favoriteStarShips: any[] = []
+  private _favoriteStarShips: any[] = []
   constructor() { }
 
-  getFavoriteStarShips(): any{
-    return this.favoriteStarShips
+  get favoriteStarShips(): any{
+    return this._favoriteStarShips
   }
-  setFavoriteStarShips(data: any){
-    this.favoriteStarShips.push(data)
+  set favoriteStarShips(data: any){
+    for (const _favoriteStarShip of this._favoriteStarShips) {
+      if(_favoriteStarShip.name === data.name) return
+    }
+    this._favoriteStarShips.push(data)
   }
 
 }

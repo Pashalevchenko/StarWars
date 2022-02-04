@@ -18,18 +18,11 @@ export class FavoriteShipComponent implements OnInit {
    }
   @Input() favoriteShip: any
 
-  @Output() shipToDelite = new EventEmitter();
-
   ngOnInit(): void {
   }
 
-  deliteFromFavList(){
-    this.shipToDelite.emit(this.favoriteShip)
-    
-  }
-
   open() {
-    this.modalRef = this.modalService.open(ModalWindowComponent, {data: {title: this.favoriteShip.name}})
+    this.modalRef = this.modalService.open(ModalWindowComponent, {data: {ship: this.favoriteShip}})
   }
  
 }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { ModalComponent } from 'ngb-modal';
+import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.service';
 
 @Component({
   selector: 'app-modal-window',
@@ -11,15 +12,16 @@ import { ModalComponent } from 'ngb-modal';
 })
 export class ModalWindowComponent implements OnInit {
 
-  constructor(public modalRef: MdbModalRef<ModalComponent>) { }
+  constructor(public modalRef: MdbModalRef<ModalComponent>, private favoriteStarShipService: FavoriteStarShipService) { }
 
-  title: string | null = null
+  ship: any;
   ngOnInit(): void {
     console.log()
   }
 
   deliteFromFavList(){
-    // this.active.close()
+    this.favoriteStarShipService.deliteStarShip(this.ship)
+    this.modalRef.close()
   }
 
   

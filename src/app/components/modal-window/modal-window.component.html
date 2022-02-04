@@ -1,17 +1,19 @@
 
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Remove from favorite</h5>
     <button
       type="button"
       class="btn-close"
       aria-label="Close"
-      (click)="modalRef.close()"
+      (click)="modalRef.close()" 
     ></button>
   </div>
-  <div class="modal-body">...</div>
+  <div class="modal-body">
+    <p>Are you sure want remone {{ship.name}} from favorite</p>
+  </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
       Close
     </button>
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn btn-primary" (click)="deliteFromFavList()">Delite</button>
   </div>

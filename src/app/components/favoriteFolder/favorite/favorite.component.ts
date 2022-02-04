@@ -13,17 +13,9 @@ export class FavoriteComponent implements OnInit {
 
   constructor(private favoriteStarShip: FavoriteStarShipService) { 
     this.favorite = this.favoriteStarShip.favoriteStarShips;
-    
   }
 
   ngOnInit(): void {
      
   }
-
-  shipToDelite(val: any){
-    // Remove to service
-    let delitedShip = this.favorite.findIndex((statShip) => statShip === val);
-    this.favorite.splice(delitedShip, 1)
-  }
-
 }

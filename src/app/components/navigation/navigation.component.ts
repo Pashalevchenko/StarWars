@@ -9,11 +9,9 @@ import { BehaviorSubject } from 'rxjs';
 export class NavigationComponent implements OnInit {
 
   constructor() { }
-  refreshPage = new BehaviorSubject<boolean>(true)
-
+  
   ngOnInit(): void {
-    this.refreshPage.subscribe(l => console.log(l))
-    console.log("vot i ya")
+    
   }
 
   logOut(){

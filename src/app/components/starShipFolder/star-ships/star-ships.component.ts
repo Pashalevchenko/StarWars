@@ -11,7 +11,6 @@ export class StarShipsComponent implements OnInit {
 
   starShips: any;
   private currentPage: number = 1;
-  // favorite: any = [];
   isLoading: boolean = false;
   
   constructor(private starShipService: StarShipService, 
@@ -40,11 +39,8 @@ export class StarShipsComponent implements OnInit {
   next(){
     this.onFechPost(this.starShips.next)
   }
-  // selectedFavorite(val: any){
-  //   this.favorite.push(val)
-  // }
+ 
   favStarShip(favoriteStarShip: any){
-    // console.log(favoriteStarShip)
     this.favoriteStarShipService.favoriteStarShips = favoriteStarShip;
   }
 

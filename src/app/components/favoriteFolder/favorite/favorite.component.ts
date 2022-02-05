@@ -19,7 +19,7 @@ export class FavoriteComponent implements OnInit, OnDestroy {
  
   ngOnInit(): void {
     this.showPage();
-    this.subscription = this.favoriteStarShip.starShipWasDelited.subscribe(() =>{
+    this.subscription = this.favoriteStarShip.starShipWasChenged.subscribe(() =>{
       this.showPage();
     })
     
@@ -32,11 +32,9 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   next(){
     this.favoriteStarShip.currentPageValue += 1
-    this.showPage()
   }
   back(){
     this.favoriteStarShip.currentPageValue -= 1
-    this.showPage()
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { interval, Observable, Subject } from 'rxjs';
+import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.service';
 
 @Component({
@@ -9,52 +9,37 @@ import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.ser
   styleUrls: ['./favorite.component.css'],
   // providers: [FavoriteStarShipService]
 })
-export class FavoriteComponent implements OnInit {
+export class FavoriteComponent implements OnInit, OnDestroy {
 
   favorite: any[] = [];
-  favoriteToShow: any[] = []
-  currentPage: number = 1;
-  shipsToDisplay: number = 5;
-  startValue = 0;
-  endvalue = 0;
-
-  constructor(private favoriteStarShip: FavoriteStarShipService, private route: ActivatedRoute) { 
-    // this.favorite = this.favoriteStarShip.favoriteStarShips;
-    
+  private subscription: Subscription = new Subscription;
+  constructor(private favoriteStarShip: FavoriteStarShipService) { 
+ 
   }
-  private refresh = new Subject<any>();
-
+ 
   ngOnInit(): void {
-    interval(1000).subscribe(count =>{
-      // console.log(count)
-    })
-    const observ = Observable.create((observer: any) =>{
-      observer.next(this.favoriteToShow)
-      this.favoriteStarShip.favoriteStarShips
-    })
     this.showPage();
-
-    observ.subscribe((data: any) =>{
-      console.log(data)
+    this.subscription = this.favoriteStarShip.starShipWasDelited.subscribe(() =>{
       this.showPage();
     })
-    console.log("hi")
-     
+    
   }
 
   private showPage(){
-    this.endvalue = this.currentPage * this.shipsToDisplay;
-    this.startValue = (this.currentPage - 1) * this.shipsToDisplay;
-    this.favorite = this.favoriteStarShip.favoriteStarShips;
-    this.favoriteToShow = this.favorite.slice(this.startValue, this.endvalue)
+    this.favorite = this.favoriteStarShip.favoriteStarShips
+    
   }
 
   next(){
-    this.currentPage += 1;
+    this.favoriteStarShip.currentPageValue += 1
     this.showPage()
   }
   back(){
-    this.currentPage -= 1;
+    this.favoriteStarShip.currentPageValue -= 1
     this.showPage()
+  }
+
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe()
   }
 }

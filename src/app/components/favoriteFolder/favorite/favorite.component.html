@@ -1,4 +1,4 @@
-<app-favorite-ship *ngFor="let favoriteShip of favoriteToShow" [favoriteShip]="favoriteShip"></app-favorite-ship>
+<app-favorite-ship *ngFor="let favoriteShip of favorite" [favoriteShip]="favoriteShip"></app-favorite-ship>
 <h3 *ngIf="favorite.length === 0">No favorit Star ships</h3>
 <!-- Total Starships -->
 <button (click)="back()">Back</button>

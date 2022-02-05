@@ -19,6 +19,7 @@ export class FavoriteShipComponent implements OnInit {
   @Input() favoriteShip: any
 
   ngOnInit(): void {
+    
   }
 
   open() {

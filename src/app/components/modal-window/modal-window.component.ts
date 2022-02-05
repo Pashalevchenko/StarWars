@@ -20,7 +20,6 @@ export class ModalWindowComponent implements OnInit {
 
   deliteFromFavList(){
     this.favoriteStarShipService.deliteStarShip(this.ship)
-    console.log(this.ship)
     this.modalRef.close()
   }
 

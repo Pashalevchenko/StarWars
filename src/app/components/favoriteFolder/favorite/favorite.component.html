@@ -1,5 +1,29 @@
+
+    <h4 *ngIf="favorite.length != 0">Total favorite star ships - {{originalFavorite.length}}</h4>
+<form (change)="displayItemChange($event)" *ngIf="favorite.length > 0">
+    <div class="d-flex gap-4 mt-3">
+       <p>Ships to display: </p>
+       <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="3">
+                <label class="form-check-label" for="inlineRadio1">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="4">
+                <label class="form-check-label" for="inlineRadio2">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="5">
+                <label class="form-check-label" for="inlineRadio3">5</label>
+            </div>
+       </div>
+    </div>
+</form>
+
 <app-favorite-ship *ngFor="let favoriteShip of favorite" [favoriteShip]="favoriteShip"></app-favorite-ship>
 <h3 *ngIf="favorite.length === 0">No favorit Star ships</h3>
 <!-- Total Starships -->
-<button (click)="back()">Back</button>
-<button (click)="next()">Next</button>
+<div>
+    <button (click)="back()">Back</button>
+    <button (click)="next()">Next</button>
+</div>

@@ -12,32 +12,36 @@ import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.ser
 export class FavoriteComponent implements OnInit, OnDestroy {
 
   favorite: any[] = [];
+  originalFavorite = this.favoriteStarShipService.originalFavoriteStarShips
   private subscription: Subscription = new Subscription;
-  constructor(private favoriteStarShip: FavoriteStarShipService) { 
- 
+  constructor(private favoriteStarShipService: FavoriteStarShipService) { 
+    
   }
  
   ngOnInit(): void {
     this.showPage();
-    this.subscription = this.favoriteStarShip.starShipWasChenged.subscribe(() =>{
+    this.subscription = this.favoriteStarShipService.starShipWasChenged.subscribe(() =>{
       this.showPage();
-    })
+    }) 
     
   }
 
   private showPage(){
-    this.favorite = this.favoriteStarShip.favoriteStarShips
-    
+    this.favorite = this.favoriteStarShipService.favoriteStarShips
   }
 
   next(){
-    this.favoriteStarShip.currentPageValue += 1
+    this.favoriteStarShipService.currentPageValue += 1
   }
   back(){
-    this.favoriteStarShip.currentPageValue -= 1
+    this.favoriteStarShipService.currentPageValue -= 1
   }
 
   ngOnDestroy(): void {
       this.subscription.unsubscribe()
+  }
+
+  displayItemChange(val: any){
+    this.favoriteStarShipService.shipsToDisplayNumber = +val.target.value
   }
 }

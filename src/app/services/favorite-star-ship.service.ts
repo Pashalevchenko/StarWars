@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class FavoriteStarShipService {
 
-  starShipWasChenged = new Subject<any>()
+  starShipWasChenged = new Subject()
 
   private _favoriteStarShips: any[] = [];
   private currentPage: number = 1;
@@ -15,6 +15,14 @@ export class FavoriteStarShipService {
   private endvalue = 0;
  
   constructor() { }
+
+  set shipsToDisplayNumber(number: number){
+    this.shipsToDisplay = number;
+    this.starShipWasChenged.next(this.shipsToDisplay)
+  }
+  get originalFavoriteStarShips(){
+    return this._favoriteStarShips;
+  }
 
   get favoriteStarShips(): any{
     this.endvalue = this.currentPage * this.shipsToDisplay;

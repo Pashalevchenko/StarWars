@@ -11,12 +11,9 @@ import { StarShipService } from './services/star-ship.service';
 export class AppComponent {
 
   submitFormStatus = localStorage.getItem("isLogin")
-  // private refresh = new Subject()
-  
+
   constructor(private router: Router){
-  //  if(!this.submitFormStatus){
-  //   this.router.navigate(["/login"])
-  //  }
+ 
   }
 
 

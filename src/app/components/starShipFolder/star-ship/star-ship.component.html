@@ -3,8 +3,9 @@
         <h5 class="card-title">{{starShip.name}}</h5>
         <p class="card-text">Manufacture: {{starShip.manufacturer}}</p>
         <div class="d-flex gap-2">
+            <!-- #0b5ed7 -->
             <button (click)="starShipDetail()" class="btn btn-primary">Details</button>
-            <button (click)="addToFavorite()" class="btn btn-primary">Add to favorite</button>
+            <button (click)="addToFavorite()" class="btn" [ngClass]="{ 'btn-success ' : isInFavorite, 'btn-primary' : !isInFavorite}">{{buttonText}}</button>
         </div>
     </div>
 </div>

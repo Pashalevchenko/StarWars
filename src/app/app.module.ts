@@ -25,6 +25,7 @@ import { ModalWindowComponent } from './components/modal-window/modal-window.com
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Overlay } from '@angular/cdk/overlay';
+import { StarShipDirectiveDirective } from './components/starShipFolder/star-ship/star-ship-directive.directive';
 
 
 
@@ -43,6 +44,7 @@ import { Overlay } from '@angular/cdk/overlay';
     LoginPageComponent,
     NavigationComponent,
     ModalWindowComponent,
+    StarShipDirectiveDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { StarShipService } from './star-ship.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteStarShipService {
 
-  starShipWasChenged = new Subject()
+  starShipWasChenged = new Subject();
+  favoritListWasChanged = new Subject();
 
   private _favoriteStarShips: any[] = [];
   private currentPage: number = 1;
   private shipsToDisplay: number = 5;
   private startValue = 0;
   private endvalue = 0;
- 
-  constructor() { }
+
+  constructor(private starshipService: StarShipService) { }
 
   set shipsToDisplayNumber(number: number){
     this.shipsToDisplay = number;
@@ -35,12 +37,12 @@ export class FavoriteStarShipService {
       if(_favoriteStarShip.name === data.name) return;
     }
     this._favoriteStarShips.push(data);
+    this.favoritListWasChanged.next(this._favoriteStarShips)
   }
 
   set currentPageValue(currentPage: number){
     this.currentPage = currentPage;
     this.starShipWasChenged.next(this.currentPage)
-    
   }
 
   get currentPageValue(){
@@ -48,9 +50,12 @@ export class FavoriteStarShipService {
   }
 
   deliteStarShip(starShipToDelite: any){
-    const delitedShip = this._favoriteStarShips.findIndex(starShip => starShip === starShipToDelite);
+    const delitedShip = this._favoriteStarShips.findIndex(starShip => starShip.name === starShipToDelite.name);
     this._favoriteStarShips.splice(delitedShip, 1);
     this.starShipWasChenged.next(this._favoriteStarShips.slice());
+    this.favoritListWasChanged.next(this._favoriteStarShips)
   }
+
+ 
 
 }

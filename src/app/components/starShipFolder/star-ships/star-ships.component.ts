@@ -11,21 +11,26 @@ export class StarShipsComponent implements OnInit {
 
   starShips: any;
   private currentPage: number = 1;
-  isLoading: boolean = false;
+  // private isLoading: boolean = false;
+  // private favoriteStarShips: any[] = [];
+  isInFavorite: boolean = false;
+  
   
   constructor(private starShipService: StarShipService, 
               private favoriteStarShipService: FavoriteStarShipService) { 
     this.starShipService = starShipService;
+    // this.favoriteStarShips = this.favoriteStarShipService.originalFavoriteStarShips
+    
     
   }
-
-  
 
   onFechPost(url?: string){
     this.starShipService.getStarShips(url).subscribe(value => {
       this.starShips = value;
     })
   }
+
+  
   pageValidation(){
     if(this.currentPage > 4 && this.currentPage < 0){
       throw new Error;
@@ -33,18 +38,18 @@ export class StarShipsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.onFechPost();
+    
   }
   
   back(){
-    this.onFechPost(this.starShips.previous)
+    this.onFechPost(this.starShips.previous);
   }
   next(){
-    this.onFechPost(this.starShips.next)
+    this.onFechPost(this.starShips.next);
   }
  
   favStarShip(favoriteStarShip: any){
     this.favoriteStarShipService.favoriteStarShips = favoriteStarShip;
   }
-
 }
 

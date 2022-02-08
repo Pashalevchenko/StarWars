@@ -28,6 +28,7 @@ export class StarShipsComponent implements OnInit {
     this.starShipService.getStarShips(url).subscribe(value => {
       this.starShips = value;
     })
+  
   }
 
   

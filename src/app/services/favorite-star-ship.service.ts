@@ -16,7 +16,7 @@ export class FavoriteStarShipService {
   private startValue = 0;
   private endvalue = 0;
 
-  constructor(private starshipService: StarShipService) { }
+  constructor() { }
 
   set shipsToDisplayNumber(number: number){
     this.shipsToDisplay = number;
@@ -24,6 +24,9 @@ export class FavoriteStarShipService {
   }
   get originalFavoriteStarShips(){
     return this._favoriteStarShips;
+  }
+  get shipsToDisplayPages(){
+    return this.shipsToDisplay
   }
 
   get favoriteStarShips(): any{

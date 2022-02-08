@@ -31,9 +31,13 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   }
 
   next(){
-    this.favoriteStarShipService.currentPageValue += 1
+    const maxPage = Math.ceil(this.originalFavorite.length / this.favoriteStarShipService.shipsToDisplayPages)
+    if(maxPage > this.favoriteStarShipService.currentPageValue){
+      this.favoriteStarShipService.currentPageValue += 1
+    }
   }
   back(){
+    if(this.favoriteStarShipService.currentPageValue <= 1) return
     this.favoriteStarShipService.currentPageValue -= 1
   }
 

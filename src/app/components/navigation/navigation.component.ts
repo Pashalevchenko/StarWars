@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -8,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   
   ngOnInit(): void {
     
@@ -16,6 +17,7 @@ export class NavigationComponent implements OnInit {
 
   logOut(){
     localStorage.removeItem("isLogin")
+    this.router.navigate(['/login']);
     
   }
 }

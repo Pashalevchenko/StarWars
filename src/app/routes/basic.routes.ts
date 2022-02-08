@@ -9,12 +9,15 @@ import { StarShipsComponent } from "../components/starShipFolder/star-ships/star
 
 
 export const routes: Routes =[
-    // {path: "/", component: NavigationComponent},
+    // Add 404
+    {path: "", component: NavigationComponent, children:[
         {path: "starships", component: StarShipsComponent},
         {path: "favorite", component: FavoriteComponent},
         {path: "planets", component: PlanetsComponent,},
         {path: "planets/:id", component: PlanetDetailsComponent},
         {path: "starships/:id", component: StarShipDetailsComponent},
-         {path: "login", component: LoginPageComponent},
+    ]},
+        
+        {path: "login", component: LoginPageComponent},
     
   ]

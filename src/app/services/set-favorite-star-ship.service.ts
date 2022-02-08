@@ -17,18 +17,18 @@ export class SetFavoriteStarShipService {
    }
 
   set isInFavoriteList(inFavList: boolean){
-    this.isFavorite = inFavList
+    this.isFavorite = inFavList;
     
   }
   get isInFavoriteList(){
-    return this.isFavorite
+    return this.isFavorite;
   }
   set textForButton(text:string){
-    this.buttonText = text
+    this.buttonText = text;
   }
 
   get textForButton(){
-    return this.buttonText
+    return this.buttonText;
   }
 
 
@@ -36,12 +36,12 @@ export class SetFavoriteStarShipService {
     for (const favStarShip of this.favoriteStarShipService.originalFavoriteStarShips) {
       if(favStarShip.name === starShip.name){
         this.isFavorite = true;
-        this.buttonText = "In favorite list"
-        return
+        this.buttonText = "In favorite list";
+        return;
       }
       if(this.isFavorite){
         this.isFavorite = false;
-        this.buttonText = "Add to favorite"
+        this.buttonText = "Add to favorite";
       }
       
     }

@@ -15,31 +15,28 @@ import { ModalWindowComponent } from '../../modal-window/modal-window.component'
 export class StarShipComponent implements OnInit {
 
   @Input() starShip: any;
-  @Output() favoriteStarship = new EventEmitter
-  isInFavorite!: boolean
-  favoriteLIst: any[] = []
-  buttonText: string = 'Add to favorite';
+  @Output() favoriteStarship = new EventEmitter;
+  isInFavorite!: boolean;
+  favoriteLIst: any[] = [];
+  buttonText: string = '';
   modalRef: MdbModalRef<ModalWindowComponent> | null = null
   constructor(private router: Router,
     private favoriteStarShipService: FavoriteStarShipService,
     private modalService: MdbModalService,
     private setFavoriteStarShipService: SetFavoriteStarShipService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.startSettings()
+    this.startSettings();
     this.favoriteStarShipService.favoritListWasChanged.subscribe(() => {
-      this.startSettings()
-
+      this.startSettings();
     })
-
   }
 
   private startSettings(){
-    this.setFavoriteStarShipService.sortByFavorite(this.starShip)
-      this.isInFavorite = this.setFavoriteStarShipService.isInFavoriteList;
-      this.buttonText = this.setFavoriteStarShipService.textForButton;
+    this.setFavoriteStarShipService.sortByFavorite(this.starShip);
+    this.isInFavorite = this.setFavoriteStarShipService.isInFavoriteList;
+    this.buttonText = this.setFavoriteStarShipService.textForButton;
   }
 
 
@@ -58,13 +55,13 @@ export class StarShipComponent implements OnInit {
       this.modalRef = this.modalService.open(ModalWindowComponent, {
         data: { ship: this.starShip }
       })
-      this.modalRef?.onClose.subscribe(isFavorite => {
-        if (isFavorite === true) {
-          this.setFavoriteStarShipService.isInFavoriteList = isFavorite;
-          this.buttonText = "Add to favorite"
-        }
-      })
+      // this.modalRef?.onClose.subscribe((isFavorite: boolean) => {
+      //   if (isFavorite) {
+      //     // this.setFavoriteStarShipService.isInFavoriteList = isFavorite;
+      //     // this.buttonText = "Add to favorite1"
+      //     // console.log("Hello")
+      //   }
+      // })
     }
-
   }
 }

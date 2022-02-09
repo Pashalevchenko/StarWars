@@ -28,9 +28,13 @@ import { Overlay } from '@angular/cdk/overlay';
 import { StarShipDirectiveDirective } from './components/starShipFolder/star-ship/star-ship-directive.directive';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LenguageChangeComponent } from './components/lenguage-change/lenguage-change.component';
 
 
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +51,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     NavigationComponent,
     ModalWindowComponent,
     StarShipDirectiveDirective,
+    LenguageChangeComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      useDefaultLang: false,
+      defaultLanguage: 'en'
     })
     // NgModule
     // NgbModal
@@ -70,6 +76,3 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
-  return new TranslateHttpLoader(http, './assets/locale/', '.json');
-}

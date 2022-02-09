@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { FavoriteStarShipService } from './favorite-star-ship.service';
 
@@ -8,12 +9,12 @@ import { FavoriteStarShipService } from './favorite-star-ship.service';
 export class SetFavoriteStarShipService {
 
   private isFavorite: boolean = false
-  private buttonText: string = "Add to favorite"
+  private buttonText: string
   isFavoriteSubject = new Subject();
 
 
-  constructor(private favoriteStarShipService: FavoriteStarShipService) {
-    
+  constructor(private favoriteStarShipService: FavoriteStarShipService, private translateService: TranslateService) {
+    this.buttonText = this.translateService.instant('starShip.buttons.addToFav');
    }
 
   set isInFavoriteList(inFavList: boolean){
@@ -30,18 +31,27 @@ export class SetFavoriteStarShipService {
   get textForButton(){
     return this.buttonText;
   }
+  sortForLeng(){
+    
+    if(this.isFavorite){
+      return this.buttonText = this.translateService.instant('starShip.buttons.removeFromFav')
+    }else if(!this.isFavorite){
+      return this.buttonText = this.translateService.instant('starShip.buttons.addToFav'); 
+    }
+  }
 
 
   sortByFavorite(starShip: any){
     for (const favStarShip of this.favoriteStarShipService.originalFavoriteStarShips) {
-      if(favStarShip.name === starShip.name){
+      if(starShip.name === favStarShip.name){
+        // (starShip.name === favStarShip.name)
         this.isFavorite = true;
-        this.buttonText = "In favorite list";
-        return;
+        this.buttonText = this.translateService.instant('starShip.buttons.removeFromFav')
+        
       }
-      if(this.isFavorite){
+      if(favStarShip.name != starShip.name){
         this.isFavorite = false;
-        this.buttonText = "Add to favorite";
+        this.buttonText = this.translateService.instant('starShip.buttons.addToFav'); 
       }
       
     }

@@ -1,6 +1,6 @@
 
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Remove from favorite</h5>
+    <h5 class="modal-title" id="exampleModalLabel">{{"modalWindow.title"| translate}}</h5>
     <button
       type="button"
       class="btn-close"
@@ -9,11 +9,11 @@
     ></button>
   </div>
   <div class="modal-body">
-    <p>Are you sure want remone {{ship.name}} from favorite</p>
+    <p>{{"modalWindow.shipToRemove"| translate}}</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
-      Close
+      {{"modalWindow.clostBtn"| translate}}
     </button>
-    <button type="button" class="btn btn-primary" (click)="deliteFromFavList()">Delite</button>
+    <button type="button" class="btn btn-primary" (click)="deliteFromFavList()"> {{"modalWindow.deliteBtn"| translate}}</button>
   </div>

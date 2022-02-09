@@ -1,21 +1,23 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { StarShipService } from './services/star-ship.service';
+import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   submitFormStatus = localStorage.getItem("isLogin")
 
-  constructor(private router: Router){
- 
+  constructor(){
+    
   }
 
+  ngOnInit(): void {
+    
+  }
 
 
 

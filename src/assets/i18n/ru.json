@@ -1,0 +1,21 @@
+{
+    "starShip":{
+        "buttons" : {
+            "delite": "Удалить",
+            "addToFav": "Добавить в избранное",
+            "removeFromFav": "Удалить из избранного"
+        }
+    },
+    "navigation" : {
+       "starShips" : "Звездный корабль",
+       "planets" : "Планеты",
+       "favorite" : "Избранное"
+    },
+    "modalWindow": {
+        "title": "Убрать из избранного",
+        "shipToRemove": "Вы уверенны что хотите удалить {{ship.name}} из избранного",
+        "clostBtn": "Закрыть",
+        "deliteBtn": "Удалить"
+
+    }
+}

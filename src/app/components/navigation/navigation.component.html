@@ -1,7 +1,7 @@
 <nav class="nav">
-    <a routerLink="/starships" class="nav-link">Star Ships</a>
-    <a routerLink="/planets" class="nav-link">Planets</a>
-    <a routerLink="/favorite" class="nav-link">Favorite</a>
+    <a routerLink="/starships" class="nav-link">{{'navigation.starShips' | translate}}</a>
+    <a routerLink="/planets" class="nav-link">{{'navigation.planets' | translate}}</a>
+    <a routerLink="/favorite" class="nav-link">{{'navigation.favorite' | translate}}</a>
     <button (click)="logOut()">Log out</button>
 </nav>
 <router-outlet></router-outlet>

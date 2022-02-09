@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 import { Observable } from 'rxjs';
+import starShipModel from '../models/starShip';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { Observable } from 'rxjs';
 export class StarShipService {
 
   constructor(private httpClient: HttpClient) { }
-  getStarShips(url?: string): Observable<any[]> {
-    return this.httpClient.get<any[]>(url || `https://swapi.dev/api/starships/`)
+  getStarShips(url?: string): Observable<starShipModel[]> {
+    return this.httpClient.get<starShipModel[]>(url || `https://swapi.dev/api/starships/`)
+    // ???????????????????
   }
 }

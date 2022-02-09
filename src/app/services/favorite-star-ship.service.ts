@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import starShipModel from '../models/starShip';
 import { StarShipService } from './star-ship.service';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class FavoriteStarShipService {
   starShipWasChenged = new Subject();
   favoritListWasChanged = new Subject();
 
-  private _favoriteStarShips: any[] = [];
+  private _favoriteStarShips: starShipModel[] = [];
   private currentPage: number = 1;
   private shipsToDisplay: number = 5;
   private startValue = 0;
@@ -35,7 +36,7 @@ export class FavoriteStarShipService {
     return this._favoriteStarShips.slice(this.startValue, this.endvalue);
   }
 
-  set favoriteStarShips(data: any){
+  set favoriteStarShips(data: starShipModel){
     for (const _favoriteStarShip of this._favoriteStarShips) {
       if(_favoriteStarShip.name === data.name) return;
     }
@@ -52,7 +53,7 @@ export class FavoriteStarShipService {
     return this.currentPage;
   }
 
-  deliteStarShip(starShipToDelite: any){
+  deliteStarShip(starShipToDelite: starShipModel){
     const delitedShip = this._favoriteStarShips.findIndex(starShip => starShip.name === starShipToDelite.name);
     this._favoriteStarShips.splice(delitedShip, 1);
     this.starShipWasChenged.next(this._favoriteStarShips.slice());

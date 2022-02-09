@@ -10,7 +10,8 @@ import { ResidentService } from 'src/app/services/resident.service';
 export class PlanetDetailsComponent implements OnInit {
 
   planet: any;
-  residents: any[] = []
+  // Array of string 
+  residents: any[] = [] 
  
   constructor(private router: Router, private residentService: ResidentService) {
     this.planet = this.router.getCurrentNavigation()?.extras.state

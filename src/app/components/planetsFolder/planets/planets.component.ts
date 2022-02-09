@@ -34,15 +34,11 @@ export class PlanetsComponent implements OnInit {
     if(this.currentPage < 0) return
     this.currentPage -= 1;
     this.onFechPost()
-    console.log(this.currentPage)
-
   }
 
   next() {
     if(this.currentPage > 6) return
     this.currentPage += 1;
     this.onFechPost()
-    console.log(this.currentPage)
-
   }
 }

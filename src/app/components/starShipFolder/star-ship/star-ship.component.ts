@@ -1,7 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalComponent } from 'ngb-modal';
+import { Subscription } from 'rxjs';
 import { FavoriteStarShipService } from 'src/app/services/favorite-star-ship.service';
 import { SetFavoriteStarShipService } from 'src/app/services/set-favorite-star-ship.service';
 import { ModalWindowComponent } from '../../modal-window/modal-window.component';
@@ -12,12 +13,13 @@ import { ModalWindowComponent } from '../../modal-window/modal-window.component'
   styleUrls: ['./star-ship.component.css'],
   providers: [SetFavoriteStarShipService]
 })
-export class StarShipComponent implements OnInit {
+export class StarShipComponent implements OnInit, OnDestroy {
 
   @Input() starShip: any;
   @Output() favoriteStarship = new EventEmitter;
   isInFavorite!: boolean;
-  favoriteLIst: any[] = [];
+  // favoriteLIst: any[] = [];
+  private favoritToDestroy!: Subscription
   buttonText: string = '';
   modalRef: MdbModalRef<ModalWindowComponent> | null = null
   constructor(private router: Router,
@@ -28,9 +30,13 @@ export class StarShipComponent implements OnInit {
 
   ngOnInit(): void {
     this.startSettings();
-    this.favoriteStarShipService.favoritListWasChanged.subscribe(() => {
+    this.favoritToDestroy = this.favoriteStarShipService.favoritListWasChanged.subscribe(() => {
       this.startSettings();
     })
+  }
+  ngOnDestroy(): void {
+    this.favoritToDestroy.unsubscribe()
+    console.log("Delite")
   }
 
   private startSettings(){

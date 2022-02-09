@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { routes } from './routes/basic.routes';
 
@@ -26,6 +26,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Overlay } from '@angular/cdk/overlay';
 import { StarShipDirectiveDirective } from './components/starShipFolder/star-ship/star-ship-directive.directive';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 
@@ -51,6 +53,14 @@ import { StarShipDirectiveDirective } from './components/starShipFolder/star-shi
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      useDefaultLang: false,
+    })
     // NgModule
     // NgbModal
     
@@ -60,3 +70,6 @@ import { StarShipDirectiveDirective } from './components/starShipFolder/star-shi
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
+  return new TranslateHttpLoader(http, './assets/locale/', '.json');
+}
